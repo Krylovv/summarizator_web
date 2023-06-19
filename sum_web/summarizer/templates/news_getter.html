@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Сократи новость</title>
+</head>
+<body>
+  <form action="" method="POST">
+  {% csrf_token %}
+  {{ form.as_p }}
+  <input type="Submit" name="submit" value="Отправить"/>
+  </form>
+
+{% if submitbutton == "Отправить" %}
+<h1>{{ summ_txt }}</h1>
+{% endif %}
+
+</body>
+</html>
