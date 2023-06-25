@@ -30,5 +30,4 @@ jobs:
         with:
           context: ./code/sum_server/
           push: true
-          tags: ${{ steps.meta.outputs.tags }}
-          labels: ${{ steps.meta.outputs.labels }}
+          tags: kryloff/sum_server_v1.0:latest
