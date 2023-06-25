@@ -23,11 +23,11 @@ jobs:
         id: meta
         uses: docker/metadata-action@v4
         with:
-          images: kryloff/sum_server_v1.0
+          images: kryloff/sum_server_amd64_v1.0
       
       - name: Build and push Docker image Sum Server
         uses: docker/build-push-action@v2
         with:
           context: ./code/sum_server/
           push: true
-          tags: kryloff/sum_server_v1.0:latest
+          tags: kryloff/sum_server_amd64_v1.0:latest
