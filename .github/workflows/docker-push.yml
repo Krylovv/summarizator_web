@@ -30,4 +30,4 @@ jobs:
         with:
           context: ./code/sum_server/
           push: true
-          tags: kryloff/sum_server_amd64_v1.0:latest
+          tags: kryloff/sum_server_amd64_v1.0:init
