@@ -12,12 +12,12 @@ Docker-контейнер приложения опубликован в Dockerh
 
 ## Установка
 Для установки приложения воспользуйтесь образом с Dockerhub:
-'''
+```
 docker pull kryloff/sum_server_amd64_v1.0:latest
 docker run -p 8001:8001 kryloff/sum_server_amd64_v1.0:latest 
-'''
+```
 Для проверки установки воспользуйтесь командой:
-'docker ps'
+`docker ps`
 
 ## Как использовать?
 Введите текст в форму и нажмите "Отправить".
