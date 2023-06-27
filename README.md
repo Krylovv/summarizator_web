@@ -5,7 +5,7 @@
 
 ## Архитектура
 Web-приложение реализовано на языке Python с использованием фреймворка Django. Для суммаризации текста выполняется запрос по API к сервису [Суммаризатор](https://developers.sber.ru/portal/products/summarizer?attempt=1) от Сбера.
-Docker-контейнер приложения опубликован в Dockerhub: kryloff/sum_server_v1.0
+Docker-контейнер приложения опубликован в Dockerhub: [kryloff/sum_server_amd64_v1.0](https://hub.docker.com/repository/docker/kryloff/sum_server_amd64_v1.0/general)
 Для автоматизации процессов CI/CD в проекте используются github actions.
 Приложение развёрнуто в k8s кластере с использованием deployment.
 Для k8s кластера настроена система мониторинга Prometheus + Grafana.
