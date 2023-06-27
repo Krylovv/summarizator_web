@@ -44,6 +44,7 @@ kubectl apply -f summarizator_web/infrastructure/sum-service.yaml
 ```
 kubectl port-forward --address=0.0.0.0 sum-service 8001
 ```
+В таком случае приложение будет доступно по ip-адресу хоста на порту 8001.
 Или создать ingress
 ```
 minikube addons enable ingress
@@ -80,6 +81,8 @@ kubectl port-forward --address=0.0.0.0 grafana 3000
 kubectl port-forward --address=0.0.0.0 prometheus-k8s 9090
 kubectl port-forward --address=0.0.0.0 alertmanager-main 9093
 ```
+Соответственно, доступ к мониторингу по ip-адресу машины. Grafana порт 3000, Prometheus порт 9090, Alertmanager порт 9093.
+
 ## Как использовать?
 Введите текст в форму и нажмите "Отправить", ниже вы получите сокращенную версию текста. Обратите внимание, что модель работает только с русским языком.
 
