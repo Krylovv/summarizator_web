@@ -1,0 +1,21 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: sum-server
+  labels:
+    app: sum-server
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: sum-server
+  template:
+    metadata:
+      labels:
+        app: sum-server
+    spec:
+      containers:
+      - name: sum-server
+        image: kryloff/sum_server_amd64_v1.0:latest
+        ports:
+        - containerPort: 8001
