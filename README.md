@@ -18,7 +18,9 @@ docker pull kryloff/sum_server_amd64_v1.0:latest
 docker run -p 8001:8001 kryloff/sum_server_amd64_v1.0:latest 
 ```
 Для проверки установки воспользуйтесь командой
-`docker ps`
+```
+docker ps
+```
 ### Minikube K8s cluster
 Для установки приложения в кластер внутри minikube в первую очередь потребуется [установить сам minikube](https://minikube.sigs.k8s.io/docs/start/) Для корректной работы приложения с подключенным мониторингом внутри minikube потребуется минимум 2 CPU и 4Гб оперативной памяти.
 Клонирование репозитория на машину
@@ -29,13 +31,19 @@ git clone https://github.com/Krylovv/summarizator_web
 ```
 minikube start
 ```
-Для удобства работы рекомендуется создать alias: `alias kubectl='minikube kubectl --'`
+Для удобства работы рекомендуется создать alias: 
+```
+alias kubectl='minikube kubectl --'
+```
 Создание deployment и service
 ```
 kubectl apply -f summarizator_web/infrastructure/deployment.yaml
 kubectl apply -f summarizator_web/infrastructure/sum-service.yaml
 ```
-Для доступа к приложению из внешней сети можно воспользоваться port-forward: `kubectl port-forward --address=0.0.0.0 sum-service 8001`
+Для доступа к приложению из внешней сети можно воспользоваться port-forward: 
+```
+kubectl port-forward --address=0.0.0.0 sum-service 8001
+```
 Или создать ingress
 ```
 minikube addons enable ingress
