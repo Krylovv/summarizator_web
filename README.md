@@ -22,9 +22,13 @@ docker run -p 8001:8001 kryloff/sum_server_amd64_v1.0:latest
 ### Minikube K8s cluster
 Для установки приложения в кластер внутри minikube в первую очередь потребуется [установить сам minikube](https://minikube.sigs.k8s.io/docs/start/) Для корректной работы приложения с подключенным мониторингом внутри minikube потребуется минимум 2 CPU и 4Гб оперативной памяти.
 Клонирование репозитория на машину
-`git clone https://github.com/Krylovv/summarizator_web`
+```
+git clone https://github.com/Krylovv/summarizator_web
+```
 Запуск minikube
-`minikube start`
+```
+minikube start
+```
 Для удобства работы рекомендуется создать alias: `alias kubectl='minikube kubectl --'`
 Создание deployment и service
 ```
@@ -48,7 +52,26 @@ kubectl apply -f summarizator_web/infrastructure/sum-ingress.yaml
 После приложение будет доступно по адресу http://YOUR_HOST_NAME/app
 
 ## Мониторинг
+В качестве мониторинга предлагается использовать решение [kube-prometheus](https://github.com/prometheus-operator/kube-prometheus/). Оно содержит prometheus в качестве источника данных, grafana для визуализации метрик, alertmanager для алертов.
 
+Установка:
+```
+minikube delete && minikube start --kubernetes-version=v1.26.0 --bootstrapper=kubeadm --extra-config=kubelet.authentication-token-webhook=true --extra-config=kubelet.authorization-mode=Webhook --extra-config=scheduler.bind-address=0.0.0.0 --extra-config=controller-manager.bind-address=0.0.0.0
+minikube addons disable metrics-server
+git clone https://github.com/prometheus-operator/kube-prometheus
+kubectl apply --server-side -f kube-prometheus/manifests/setup
+kubectl wait \
+	--for condition=Established \
+	--all CustomResourceDefinition \
+	--namespace=monitoring
+kubectl apply -f kube-prometheus/manifests/
+```
+Для доступа к мониторингу можно воспользоватся port-forward (запуск в разных терминалах)
+```
+kubectl port-forward --address=0.0.0.0 grafana 3000
+kubectl port-forward --address=0.0.0.0 prometheus-k8s 9090
+kubectl port-forward --address=0.0.0.0 alertmanager-main 9093
+```
 ## Как использовать?
 Введите текст в форму и нажмите "Отправить", ниже вы получите сокращенную версию текста. Обратите внимание, что модель работает только с русским языком.
 
