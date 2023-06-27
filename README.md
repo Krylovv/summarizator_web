@@ -22,7 +22,7 @@ docker run -p 8001:8001 kryloff/sum_server_amd64_v1.0:latest
 docker ps
 ```
 ### Minikube K8s cluster
-Для установки приложения в кластер внутри minikube в первую очередь потребуется [установить сам minikube](https://minikube.sigs.k8s.io/docs/start/) Для корректной работы приложения с подключенным мониторингом внутри minikube потребуется минимум 2 CPU и 4Гб оперативной памяти.
+Для установки приложения в кластер внутри minikube в первую очередь потребуется [установить сам minikube](https://minikube.sigs.k8s.io/docs/start/). Для корректной работы приложения с подключенным мониторингом внутри minikube потребуется минимум 2 CPU и 4Гб оперативной памяти.
 Клонирование репозитория на машину
 ```
 git clone https://github.com/Krylovv/summarizator_web
